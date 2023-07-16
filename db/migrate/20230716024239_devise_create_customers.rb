@@ -10,9 +10,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :phone_number, null: false
       t.string :post_code, null: false
       t.string :address, null: false
-      t.booltime :is_deleted, null: false, default: false
-      t.datetime :created_at, null: false
-      t.datetime :updatad_at, null: false
+      t.boolean :is_deleted, null: false, default: false
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
