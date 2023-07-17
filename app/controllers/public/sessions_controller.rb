@@ -1,4 +1,16 @@
 class Public::SessionsController < ApplicationController
+  def show 
+  end
+  
+  def edit
+  end
+  
+  def update
+  end
+  
+  def check_out
+  end
+  
     before_action :withdraw, only: [:create]
     
     protected
