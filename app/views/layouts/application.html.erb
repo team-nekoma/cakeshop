@@ -19,76 +19,75 @@
           <a class="navbar-brand p-3" href="/"><%= image_tag('IMG-7763.jpg', size: "200x100") %></a>
           <ul class="navbar-nav ml-auto ">
             <% if admin_signed_in? %>
-              <% if request.fullpath.include? "/admin" %>
+              <%# if request.fullpath.include? "/admin" %>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "商品一覧", admin_items_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "会員一覧", admin_customers_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
-                    <%= link_to "注文履歴一覧", admin_order_path %>
-                  </button>
+                  <div type="button" class="btn btn-outline-primary">
+                    <%= link_to "注文履歴一覧", admin_path %>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "ジャンル一覧", admin_genres_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
-                    <%= link_to "ログアウト", destroy_admin_session_path %>
-                  </button>
+                  <div type="button" class="btn btn-outline-primary">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                  </div>
                 </li>
-              <% else %>
-              <% end %>
+              <%# else %>
+              <%# end %>
             <% elsif customer_signed_in? %>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "マイページ", customer_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "商品一覧", items_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "カート", cart_items_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
-                    <%= link_to "ログアウト", destroy_customer_session_path %>
-                  </button>
+                  <div type="button" class="btn btn-outline-primary">
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                  </div>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "About", about_path %>
-                  </button>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "商品一覧", items_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "新規登録", new_customer_registration_path %>
-                  </button>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-outline-primary">
+                  <div type="button" class="btn btn-outline-primary">
                     <%= link_to "ログイン", new_customer_session_path %>
-                  </button>
+                  </div>
                 </li>
             <% end %>
           </ul>
