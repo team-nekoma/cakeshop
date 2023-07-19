@@ -1,0 +1,12 @@
+<h2>商品一覧（全<%= @items.count %>件）</h2>
+<div class="row">
+  <% @items.each do |item| %>
+    <div class="col-sm-3">
+      <div style="padding: 10px; background-color: #ffffff;">
+        <img style="width: 80%; height: auto; object-fit: contain; margin-bottom: 10px;" src="<%= url_for(item.image) %>">
+        <h5 style="margin: 0; padding: 0;"><%= item.name %></h5>
+        <p style="margin: 0; padding: 0;">¥<%= number_with_delimiter(item.price) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
