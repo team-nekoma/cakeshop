@@ -27,11 +27,11 @@ class Public::SessionsController < Devise::SessionsController
     before_action :withdraw, only: [:create]
     
     protected
-    def withdraw
-      @customer = Customer.find_by(email: params[:customer][:email])
-      return if !@customer
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
-        redirect_to new_customer_registration_path
+    
+   def withdraw
+        @customer = Customer.find_by(email: params[:customer][:email])
+      if @customer&.valid_password?(params[:customer][:password]) && @customer.is_deleted
+          redirect_to new_customer_session_path, notice: 'アカウントは退会済みです。'
       end
-    end
+   end
 end
