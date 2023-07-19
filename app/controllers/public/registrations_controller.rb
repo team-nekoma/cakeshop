@@ -54,7 +54,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
-  # end
+  # end:kana_last_name
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
@@ -63,6 +63,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   private
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_last_name, :kana_first_name, :kana_first_name, :email, :post_code, :address, :phone_number, :encrypted_password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :post_code, :address, :phone_number, :encrypted_password])
   end
 end
