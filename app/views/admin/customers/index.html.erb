@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h2>会員一覧</h2>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= customer.first_name %> <%= customer.last_name %></td>
+            <td><%= customer.email %></td>
+          <td class="<%= customer.is_deleted ? 'text-gray' : 'text-green' %>"><%= customer.is_deleted ? '退会済み' : '有効' %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
