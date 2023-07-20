@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+.decorative-line {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, pink, purple, blue, green, yellow);
+}
+
+.btn-custom {
+  margin-right: 10px; 
+  background-color: pink; 
+  border: none;
+}
+
+.btn-custom a {
+  color: white; 
+}
