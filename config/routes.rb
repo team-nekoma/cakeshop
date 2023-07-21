@@ -36,7 +36,7 @@ end
     end
      resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
-        delete 'all_destroy'
+        delete 'destroy_all'
       end
     end
      resources :orders, only: [:new, :create, :index, :show] do
