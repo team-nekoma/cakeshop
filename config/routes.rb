@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'check_out'
-        patch 'withdraw'
+        get 'withdraw'
+        patch 'withdraw_update'
       end
     end
      resources :cart_items, only: [:index, :update, :destroy] do
