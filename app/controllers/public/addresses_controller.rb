@@ -8,7 +8,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
-    @addresses = Address.find(params[:id])
+    @address = Address.find(params[:id])
   end
 
   def create
@@ -29,7 +29,7 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = "配送先の更新に成功しました"
       redirect_to addresses_path
     else
-      redirect_to edit_address_path
+      redirect_to edit_address_path(@address)
     end
   end
 
@@ -45,8 +45,9 @@ class Public::AddressesController < ApplicationController
 
   private
 
-  def address_params
-    params.permit(:postcode, :name, :address, :customer_id)
-  end
+def address_params
+  params.require(:address).permit(:postcode, :name, :address).merge(customer_id: current_customer.id)
+end
+
 
 end
