@@ -1,0 +1,47 @@
+<div><%= flash[:notice] %></div>
+
+<h2>配送先登録/一覧</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+        <%= form_with model: @address, url: addresses_path, method: :post,local: true do |f| %>
+          <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+          <%= f.text_field :postcode %>
+          <br>
+          <%= f.label :address, "住所" %>
+          <%= f.text_field :address %>
+          <br>
+          <%= f.label :name, "宛名" %>
+          <%= f.text_field :name %>
+          <br>
+          <%= f.submit "新規登録", class:"btn btn-primary" %>
+        <% end %>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @addresses.each do |address| %>
+          <tr>
+            <td><%= address.postcode %></td>
+            <td><%= address.address %></td>
+            <td><%= address.name %></td>
+            <td>
+              <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
+              <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+     </table>
+  </div>
+ </div>
+</div>
