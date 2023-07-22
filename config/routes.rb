@@ -4,14 +4,17 @@ Rails.application.routes.draw do
       devise_for :admin, skip: [:registrations, :passwords], controllers: {
       sessions: "admin/sessions"
     }
-      namespace :admin do
-        get '/' => 'homes#top'
-        resources :items, except: [:destroy]
-        resources :genres, only: [:index, :create, :edit, :update]
-        resources :customers, only: [:index, :show, :edit, :update]
-        resources :orders, only: [:show, :update]
-        resources :order_details, only: [:update]
-      end
+     namespace :admin do
+  get '/' => 'homes#top'
+  resources :items, except: [:destroy]
+  resources :genres, only: [:index, :create, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update] do
+    resources :orders, only: [:index] 
+  end
+  resources :orders, only: [:show, :update]
+  resources :order_details, only: [:update]
+end
+
   
   
     #顧客側ルーティング
@@ -31,9 +34,9 @@ Rails.application.routes.draw do
         patch 'withdraw_update'
       end
     end
-     resources :cart_items, only: [:index, :update, :destroy] do
+     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
-        delete 'all_destroy'
+        delete 'destroy_all'
       end
     end
      resources :orders, only: [:new, :create, :index, :show] do
