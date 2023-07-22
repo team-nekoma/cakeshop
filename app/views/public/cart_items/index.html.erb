@@ -35,6 +35,7 @@
           <td><%= cart_item.item.price_including_tax * cart_item.quantity %></td>
           <td><%= link_to '削除する', cart_item_path(cart_item), method: :delete,class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } %></td>
         </tr>
+        <% @total += cart_item.subtotal %>
         <% end %>
       </tbody>
     </table>
@@ -45,14 +46,14 @@
       <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
     </div>
     <div class="cok-3">
-      <% @cart_items.each do |cart_item| %>
+      <%# @cart_items.each do |cart_item| %>
       <table border="1">
         <tr>
           <td width="120" height="100">合計金額</td>
-          <td width="120"><%= @total += cart_item.subtotal %></td>
+          <td width="120"><%= @total %></td>
         </tr>
       </table>
-      <% end %>
+      <%# end %>
     </div>
   </div>
   <br>
