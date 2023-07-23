@@ -1,5 +1,4 @@
 <h2>注文情報確認</h2>
-<%= @order.payment %>
 
 <% @cart_items.each do |cart_item| %>
   <img src="<%= url_for(cart_item.item.image) %>" width="70" height="60" />
@@ -11,9 +10,10 @@
 <% end %>
   <%= @total %>
   
-<% @order.each do |order| %>
-<%= order.payment %>
-<%= order.address.post_code %>
-<%= order.address %>
-<%= order.name %>
-<% end %>
+
+<%= t("enums.order.payment.#{@order.payment}") %>
+<%= @order.postcode %>
+<%= @order.address %>
+<%= @order.name %>
+
+

@@ -19,13 +19,13 @@ class Public::OrdersController < ApplicationController
       @order.address = Address.find(params[:order][:address]).address
       @order.name = Address.find(params[:order][:address]).name
 
-      # address = Address.find(params[:order][:customer_id])
-      # @order.post_code = address.post_code
+      # address = Address.find(params[:order][:customer_number])
+      # @order.postcode = address.postcode
       # @order.address = address.address
       # @order.name = address.name
 
     elsif params[:order][:address_number] ==  "3"
-      @order.post_code = params[:order][:post_code]
+      @order.postcode = params[:order][:postcode]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     else
@@ -63,11 +63,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    # @order = Order.find(params[:id])
   end
 
   private
   def order_params
     params.require(:order).permit(:customer_id, :payment, :name, :postcode, :address, :order_status, :shipping_fee)
+  end
+  
+  def address_params
+    params.permit(:address, :name, :postcode, :customer_id)
   end
 end
