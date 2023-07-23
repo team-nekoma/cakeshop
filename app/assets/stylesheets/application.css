@@ -28,3 +28,11 @@
 .btn-custom a {
   color: white; 
 }
+
+th {
+  background-color: #FFD5EC	;
+}
+
+td {
+  background-color: #FFFFF0;
+}
