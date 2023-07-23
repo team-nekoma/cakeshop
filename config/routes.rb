@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :customers, only: [:index, :show, :edit, :update] do
     resources :orders, only: [:index] 
   end
-  resources :orders, only: [:show, :update, :index]
+  resources :orders, only: [:show, :update, :index, :index]
   resources :order_details, only: [:update]
 end
 
@@ -41,7 +41,7 @@ end
     end
      resources :orders, only: [:new, :create, :index, :show] do
       collection do
-        get 'confirm'
+        post 'confirm'
         get 'complete'
       end
     end
