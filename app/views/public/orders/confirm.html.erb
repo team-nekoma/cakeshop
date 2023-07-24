@@ -53,6 +53,7 @@
     <h3><strong>お届け先</strong></h3>&emsp;
       <h4>〒<%= @order.postcode %>&nbsp;<%= @order.address %>&nbsp;<%= @order.name %></h4><br>
   </div>
+  <br>
   <div align="center">
     <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
       <%= f.hidden_field :customer_id %>
@@ -61,7 +62,7 @@
       <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :shipping_fee %>
-      <%= f.submit "注文を確定する", class: "btn btn-success" %><br>
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>

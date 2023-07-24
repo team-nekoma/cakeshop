@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_23_134444) do
+ActiveRecord::Schema.define(version: 2023_07_24_040705) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 2023_07_23_134444) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id", null: false
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id", null: false
   end
 
   create_table "admins", force: :cascade do |t|
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 2023_07_23_134444) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "kana_last_name", null: false
+    t.string "kana_first_name", null: false
+    t.string "phone_number", null: false
+    t.string "post_code", null: false
+    t.string "address", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -80,13 +87,7 @@ ActiveRecord::Schema.define(version: 2023_07_23_134444) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_deleted", default: false
-    t.string "last_name"
-    t.string "first_name"
-    t.string "kana_last_name"
-    t.string "kana_first_name"
-    t.string "post_code"
-    t.string "address"
-    t.string "phone_number"
+    t.string "name"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -105,8 +106,6 @@ ActiveRecord::Schema.define(version: 2023_07_23_134444) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
-    t.integer "genre_id"
-    t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
   create_table "order_datails", force: :cascade do |t|
@@ -121,15 +120,14 @@ ActiveRecord::Schema.define(version: 2023_07_23_134444) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "payment", null: false
+    t.integer "payment", default: 0, null: false
     t.string "name", null: false
     t.string "postcode", null: false
     t.string "address", null: false
-    t.integer "order_status", null: false
+    t.integer "order_status", default: 0, null: false
     t.float "shipping_fee", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status"
   end
 
   create_table "users", force: :cascade do |t|
@@ -147,5 +145,4 @@ ActiveRecord::Schema.define(version: 2023_07_23_134444) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "orders"
-  add_foreign_key "items", "genres"
 end

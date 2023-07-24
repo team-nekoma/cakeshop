@@ -1,0 +1,15 @@
+<h2>注文一覧画面</h2>
+<% @order.each do |order| %>
+<%= order.created_at.strftime('%Y/%m/%d') %>
+<%= order.postcode %>
+<%= order.address %>
+<%= order.name %>
+
+  <% order.order_datails.each do |order_datail| %>
+  <%= order_datail.item.name %>
+  <% end %>
+  
+  <%= @shiptotal %>
+  <%= order.order_status %>
+<%= link_to "表示する", order_path(order), class: "btn btn-primary" %>
+<% end %>
