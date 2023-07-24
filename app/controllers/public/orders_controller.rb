@@ -42,15 +42,6 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.order_status = 0
     @order.save
-    
-    # current_customer.cart_items.each do |cart_item|
-    #   @order_item = OrderItem.new
-    #   @order_item.item_id = cart_item.item_id
-    #   @order_item.quantity = cart_item.quantity
-    #   # @order_item.price_including_tax =
-    #   @order_item.order_id = @order.id
-    #   @order_item.save
-    # end
 
     current_customer.cart_items.each do |cart_item|
       @order_datail = OrderDatail.new
@@ -58,7 +49,7 @@ class Public::OrdersController < ApplicationController
       @order_datail.item_id = cart_item.item_id
       @order_datail.quantity = cart_item.quantity
       @order_datail.buy_price += cart_item.subtotal
-      @order_datail.order_id = @order.id
+      @order_datail.production_status = 0
       @order_datail.save
     end
     
@@ -74,7 +65,8 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_datails = @order.order_datails
+    # @order_datails = @order.order_datails
+    @order_datails = OrderDatail.where(order_id: params[:id])
   end
 
   private
