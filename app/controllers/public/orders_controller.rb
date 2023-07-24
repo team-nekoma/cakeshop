@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.order_status = 0
     @order.save
-
+    
     # current_customer.cart_items.each do |cart_item|
     #   @order_item = OrderItem.new
     #   @order_item.item_id = cart_item.item_id
@@ -51,6 +51,17 @@ class Public::OrdersController < ApplicationController
     #   @order_item.order_id = @order.id
     #   @order_item.save
     # end
+
+    current_customer.cart_items.each do |cart_item|
+      @order_datail = OrderDatail.new
+      @order_datail.order_id = @order.id
+      @order_datail.item_id = cart_item.item_id
+      @order_datail.quantity = cart_item.quantity
+      @order_datail.buy_price += cart_item.subtotal
+      @order_datail.order_id = @order.id
+      @order_datail.save
+    end
+    
     flash[:notice] = "ご注文が確定しました。"
     current_customer.cart_items.destroy_all
     redirect_to complete_orders_path
@@ -62,7 +73,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    # @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
+    @order_datails = @order.order_datails
   end
 
   private
@@ -70,4 +82,7 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:customer_id, :payment, :name, :postcode, :address, :order_status, :shipping_fee)
   end
   
+  def order_datail_params
+    params.require(:order_datail).permit(:order_id, :item_id, :quantity, :buy_price, :production_status)
+  end
 end

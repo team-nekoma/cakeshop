@@ -8,5 +8,7 @@ class Item < ApplicationRecord
   enum status: { on_sale: 0, off_sale: 1 }
   
   has_many :cart_items
+  has_many :genres
+  has_many :order_datails
   validates :price, presence: true
 end
