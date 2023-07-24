@@ -4,7 +4,7 @@
     <div class="col-sm-3">
       <div style="padding: 10px; background-color: #ffffff;">
         <%= link_to item_path(item.id) do %>
-          <img style="width: 80%; height: auto; object-fit: contain; margin-bottom: 10px;" src="<%= url_for(item.image) %>">
+          <img style="width: 200px; height: 170px; object-fit: contain; margin-bottom: 10px;" src="<%= url_for(item.image) %>">
         <% end %>
         <h5 style="margin: 0; padding: 0;"><%= item.name %></h5>
         <p style="margin: 0; padding: 0;">¥<%= number_with_delimiter(item.price) %></p>

@@ -40,6 +40,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @order.order_status = 0
     @order.save
 
     # current_customer.cart_items.each do |cart_item|
