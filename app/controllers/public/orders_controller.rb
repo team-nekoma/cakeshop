@@ -48,7 +48,7 @@ class Public::OrdersController < ApplicationController
       @order_datail.order_id = @order.id
       @order_datail.item_id = cart_item.item_id
       @order_datail.quantity = cart_item.quantity
-      @order_datail.buy_price += cart_item.subtotal
+      @order_datail.buy_price = cart_item.subtotal
       @order_datail.production_status = 0
       @order_datail.save
     end
@@ -60,7 +60,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = current_customer.orders
+    @orders = current_customer.orders
   end
 
   def show
