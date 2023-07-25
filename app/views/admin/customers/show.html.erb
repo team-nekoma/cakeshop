@@ -1,3 +1,6 @@
+<div>
+  <%= flash[:notice] %>
+</div>  
 <div class="container mt-5">
   <h2 class="mb-4 text-center"><%= @customer.last_name %> <%= @customer.first_name %>さんの会員詳細</h2>
 
@@ -12,7 +15,7 @@
     <p class="my-3"><strong>会員ステータス </strong><span style="margin-left:90px; color:<%= @customer.is_deleted ? 'gray' : 'green' %>;"><%= @customer.is_deleted ? '退会済み' : '有効' %></span></p>
 
    <%= link_to '編集する', edit_admin_customer_path(@customer), class: 'btn btn-success btn-space' %>
-   <%= link_to '注文履歴一覧へ', admin_customer_orders_path(@customer), class: 'btn btn-info' %>
+   <%= link_to '注文履歴一覧へ', admin_path, class: 'btn btn-info' %>
 
 
   </div>
