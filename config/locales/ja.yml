@@ -10,7 +10,3 @@ ja:
         in_production: "製作中"
         preparing_to_ship: "発送準備中"
         shipped: "発送済み"
-      item:
-       status: 
-         on_sale: "販売中"
-         off_sale: "販売停止中"
