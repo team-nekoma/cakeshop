@@ -7,6 +7,10 @@ class Item < ApplicationRecord
   has_one_attached :image
   enum status: { on_sale: 0, off_sale: 1 }
   
+   def human_enum_name(enum_name)
+    I18n.t("enums.#{self.class.name.downcase}.#{enum_name.to_s}.#{public_send(enum_name)}")
+   end
+  
   has_many :cart_items
   has_many :genres
   has_many :order_datails
