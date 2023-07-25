@@ -20,8 +20,8 @@
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item) %></td>
             <td><%= item.price.to_s(:delimited) %></td>
-            <td>
-             <%= item.on_sale? ? '販売中' : '販売停止中' %>
+            <td style="margin-left:90px; color:green;">
+            <%= item.is_active ? '販売中' : '販売停止中' %></td>
             </td>
            </tr>
           <% end %>
