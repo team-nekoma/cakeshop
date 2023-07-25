@@ -1,22 +1,79 @@
-<h2 class="text-center">注文履歴詳細</h2>
 <div class="container">
-  <div class="row col-md-8">
-    <div class="container mt-5">
-
-  <div class="pl-5">
-    <p class="my-3"><strong>購入者 </strong><span style="margin-left:160px;">
-      <%= link_to admin_order_detail_path(@order) do %>
-        <%= @order.customer.last_name %> <%= @order.customer.first_name %>
-      <% end %>
-    </span></p>
-    <p class="my-3"><strong>注文日 </strong><span style="margin-left:160px;"><%= order.created_at.strftime("%Y/%m/%d") %></span></p>
-    <p class="my-3"><strong>配送先 </strong><span style="margin-left:160px;">
-      <%= (@order.customer.postcode).to_s.insert(3, "-") %><br>
-      <%= @order.customer.address %>
-    </span></p>
-    <p class="my-3"><strong>支払い方法 </strong><span style="margin-left:160px;"><%= @order. %></span></p>
-    <p class="my-3"><strong>注文ステータス </strong><span style="margin-left:90px; color:<%= @order.customer.is_deleted ? 'gray' : 'green' %>;"><%= @customer.is_deleted ? '退会済み' : '有効' %></span></p>
-
-
+<div class="col-xs-10 col-xs-offset-1">
+  <div class="row">
+    <div class="col-xs-7">
+    <h2>注文履歴詳細</h2><br>
+     <table border="1" width="500" height="300">
+      <tr>
+       <th>購入者</th>
+       <td>
+        <%= link_to admin_customer_path(@order) do %>
+          <%= @order.customer.last_name %>
+          <%= @order.customer.first_name %>
+        <% end %>
+       </td>
+      </tr>
+      <tr>
+       <th>注文日</th>
+       <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+      </tr>
+      <tr>
+       <th>配送先</th>
+       <td>〒<%= (@order.postcode).to_s.insert(3, "-") %>&emsp;<%= @order.address %><br><%= @order.name %></td>
+      </tr>
+      <tr>
+       <th>支払方法</th>
+       <td><%= t("enums.order.payment.#{@order.payment}") %></td>
+      </tr>
+      <tr>
+       <th>注文ステータス</th>
+       <td>
+        <%= form_with model: @order, url: update_status_admin_order_path(@order), method: :patch do |f| %>
+          <%= f.select :order_status, Order.order_statuses_i18n, class: "form-control" %>
+          <%= f.submit "更新", class: "btn btn-primary" %>
+        <% end %>
+       </td>
+      </tr>
+     </table>
+    </div>
   </div>
+  <div class="row">
+ 　  <div class="col-xs-7">
+      <table border="1" width="600" height="150">
+       <tr>
+         <th>商品名</th>
+         <th>単価（税込）</th>
+         <th>数量</th>
+         <th>小計</th>
+         <th>製作ステータス</th>
+       </tr>
+       <% @order_datails.each do |order_datail| %>
+       <tr>
+         <td><%= order_datail.item.name %></td>
+         <td>￥<%= order_datail.item.price_including_tax %></td>
+         <td><%= order_datail.quantity %></td>
+         <td>￥<%= order_datail.item.price_including_tax * order_datail.quantity %></td>
+         <td></td>
+       </tr>
+       <% end %>
+   　  </table>
+    </div>
+    <div class="col-md-3">
+      <table class="table">
+        <tr>
+          <td>商品合計</td>
+          <td>￥<%= @order_datails.sum{ |datail| datail.buy_price }.to_i %></td>
+        </tr>
+        <tr>
+          <td>送料</td>
+          <td>￥<% @shipping_fee = 800 %><%= @shipping_fee.to_i %></td>
+        </tr>
+        <tr>
+          <td>請求金額合計</td>
+          <td>￥<%= @order.total_price.to_i %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 </div>
