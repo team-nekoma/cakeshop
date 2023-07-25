@@ -85,10 +85,6 @@ ActiveRecord::Schema.define(version: 2023_07_19_034643) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< Updated upstream
-=======
-    t.boolean "is_deleted", default: false
->>>>>>> Stashed changes
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

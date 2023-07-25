@@ -9,9 +9,13 @@ Rails.application.routes.draw do
   resources :items, except: [:destroy]
   resources :genres, only: [:index, :create, :edit, :update]
   resources :customers, only: [:index, :show, :edit, :update] do
-    resources :orders, only: [:index] 
+    resources :orders, only: [:index]
   end
-  resources :orders, only: [:show, :update, :index, :index]
+  resources :orders, only: [:show, :update, :index, :index] do
+    member do
+      patch :update_status
+    end
+  end
   resources :order_details, only: [:update]
 end
 

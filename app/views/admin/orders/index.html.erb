@@ -22,10 +22,10 @@
       <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
       <td><%= order.order_datails.sum(:quantity) %></td>
       <td>
-        <%= form_with model: order, url: admin_order_path(order), method: :patch do |f| %>
-        <%= f.select :order_status, Order.order_statuses, class: "form-control" %>
-        <!--%= f.submit "更新", class: "btn btn-primary" %>-->
-        <% end %>
+        <%= form_with model: order, url: update_status_admin_order_path(order), method: :patch do |f| %>
+        <%= f.select :order_status, Order.order_statuses_i18n, class: "form-control" %>
+        <%= f.submit "更新", class: "btn btn-primary" %>
+      <% end %>
       </td>
     </tr>
   <% end %>
