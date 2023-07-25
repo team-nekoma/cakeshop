@@ -5,13 +5,11 @@ Rails.application.routes.draw do
       sessions: "admin/sessions"
     }
      namespace :admin do
-  get '/' => 'homes#top'
+  get '/' => 'homes#top' 
   resources :items, except: [:destroy]
   resources :genres, only: [:index, :create, :edit, :update]
-  resources :customers, only: [:index, :show, :edit, :update] do
-    resources :orders, only: [:index]
-  end
-  resources :orders, only: [:show, :update, :index, :index] do
+  resources :customers, only: [:index, :show, :edit, :update] 
+  resources :orders, only: [:show, :update,] do
     member do
       patch :update_status
     end
