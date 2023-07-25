@@ -1,0 +1,22 @@
+<h2 class="text-center">注文履歴詳細</h2>
+<div class="container">
+  <div class="row col-md-8">
+    <div class="container mt-5">
+
+  <div class="pl-5">
+    <p class="my-3"><strong>購入者 </strong><span style="margin-left:160px;">
+      <%= link_to admin_order_detail_path(@order) do %>
+        <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+      <% end %>
+    </span></p>
+    <p class="my-3"><strong>注文日 </strong><span style="margin-left:160px;"><%= order.created_at.strftime("%Y/%m/%d") %></span></p>
+    <p class="my-3"><strong>配送先 </strong><span style="margin-left:160px;">
+      <%= (@order.customer.postcode).to_s.insert(3, "-") %><br>
+      <%= @order.customer.address %>
+    </span></p>
+    <p class="my-3"><strong>支払い方法 </strong><span style="margin-left:160px;"><%= @order. %></span></p>
+    <p class="my-3"><strong>注文ステータス </strong><span style="margin-left:90px; color:<%= @order.customer.is_deleted ? 'gray' : 'green' %>;"><%= @customer.is_deleted ? '退会済み' : '有効' %></span></p>
+
+
+  </div>
+</div>
