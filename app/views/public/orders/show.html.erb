@@ -1,25 +1,63 @@
-<h2>注文履歴詳細</h2>
-<h4>注文情報</h4>
-
-<%= @order.created_at.strftime('%Y/%m/%d') %>
-<%= @order.postcode %>
-<%= @order.address %>
-<%= @order.name %>
-<%= t("enums.order.payment.#{@order.payment}") %>
-<%#= @order.status %>
-
-<h4>請求情報</h4>
-<%# @order.shipping_fee = 800 %>
-<%#= @order.shipping_fee %>
-<%#= @total %>
-<%# @shiptotal = @total + @order.shipping_fee %>
-<%= @shiptotal %>
-
-<h4>注文内容</h4>
-<% @order_datails.each do |order_datail| %>
-<%= order_datail.item.name %>]
-<%= order_datail.item.price_including_tax %>
-<%= order_datail.quantity %>
-<%#= order_datail.item.price_including_tax * cart_item.quantity %>
-<%# @total += cart_item.subtotal %>
-<% end %>
+<div class="container">
+  <h2>注文履歴詳細</h2><br>
+  <div class="row">
+    <div class="col-md-7">
+      <strong>注文情報</strong>
+      <table class="table table-bordered ">
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>〒<%= @order.postcode %>&nbsp;<%= @order.address %><br><%= @order.name %></td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= t("enums.order.payment.#{@order.payment}") %></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td><%= I18n.t("enums.order.order_status.#{@order.order_status}") %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <strong>請求情報</strong>
+        <table class="table table-bordered ">
+          <tr>
+            <th>商品合計</th>
+            <td><%= @order_datails.sum{ |datail| datail.buy_price }.to_i  %></td>
+          </tr>
+          <tr>
+            <th>配送料</th>
+            <% @shipping_fee = 800 %>
+            <td><%= @shipping_fee.to_i %></td>
+          </tr>
+          <tr>
+            <th>ご請求額</th>
+            <td><%= @order.total_price.to_i %></td>
+          </tr>
+        </table>
+    </div>
+  </div>
+  <div class="row">
+    <strong>注文内容</strong>
+    <table class="table table-bordered ">
+      <tr>
+        <th>商品</th>
+        <th>単価（税込）</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+      <% @order_datails.each do |order_datail| %>
+      <tr>
+        <td><%= order_datail.item.name %></td>
+        <td><%= order_datail.item.price_including_tax %></td>
+        <td><%= order_datail.quantity %></td>
+        <td><%= order_datail.item.price_including_tax * order_datail.quantity %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

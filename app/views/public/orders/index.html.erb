@@ -21,7 +21,7 @@
           </td>
           <td>
             <% order.order_datails.each do |order_datail| %>
-              <%= order.total_price %><br>
+              <%= order.total_price.to_i %><br>
             <% end %>
           </td>
           <td>
