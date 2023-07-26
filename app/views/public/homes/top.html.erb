@@ -9,7 +9,7 @@
 <div class="new-items" style="display: flex; justify-content: space-around; padding: 0 100px;">
   <% @items.each do |item| %>
     <div style="padding: 10px; background-color: #ffffff; flex: 1; margin: 10px;">
-      <%= link_to item_path(item.id) do %>
+      <%= link_to item_path(item) do %>
         <img style="width: 200px; height: 170px; object-fit: contain; margin-bottom: 10px;" src="<%= url_for(item.image) %>">
       <% end %>
       <h5 style="margin: 0; padding: 0;"><%= item.name %></h5>
