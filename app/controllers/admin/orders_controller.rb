@@ -1,6 +1,10 @@
 class Admin::OrdersController < ApplicationController
    before_action :authenticate_admin!
    
+  def show
+    @order = Order.find(params[:id])
+    @order_datails = @order.order_datails
+  end
   
   def update_status
     @order = Order.find(params[:id])

@@ -12,7 +12,7 @@ ja:
         shipped: "発送済み"
       item:
     order_detail:
-     making_status:
+     production_status:
        production_not_possible: "製作不可"
        production_pending: "製作待ち"
        in_production: "製作中"
