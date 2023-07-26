@@ -16,6 +16,8 @@ class Admin::OrdersController < ApplicationController
       redirect_to admins_path
     end
   end
+  
+  
 
   private
 
