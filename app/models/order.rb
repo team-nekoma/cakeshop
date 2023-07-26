@@ -15,21 +15,5 @@ class Order < ApplicationRecord
           [I18n.t("enums.order.order_status.#{status}"), status]
         end.to_h
     end
-
-
-#      enum order_status: {
-#      unpaid: 0,
-#      payment_confirmed: 1,
-#      in_production: 2,
-#      preparing_for_shipment: 3,
-#      shipped: 4
-#   }
     
-  #   enum status: {
-  #   unpaid: 0,
-  #   payment_confirmed: 1,
-  #   in_production: 2,
-  #   preparing_for_shipment: 3,
-  #   shipped: 4
-  # }
 end
