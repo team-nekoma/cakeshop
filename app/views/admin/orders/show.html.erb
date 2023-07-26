@@ -53,7 +53,12 @@
          <td>￥<%= order_datail.item.price_including_tax %></td>
          <td><%= order_datail.quantity %></td>
          <td>￥<%= order_datail.item.price_including_tax * order_datail.quantity %></td>
-         <td></td>
+         <td>
+          <%= form_with model:order_datail, url: admin_order_detail_path(order_datail), local: true do |f| %>
+              <%= f.select :production_status, [["製作不可", "production_not_possible"], ["製作待ち", "production_pending"], ["製作中", "in_production"], ["製作完了", "production_complete"]] %>
+              <%= f.submit "更新", class: 'btn btn-primary' %>
+            <% end %>
+         </td>
        </tr>
        <% end %>
    　  </table>
