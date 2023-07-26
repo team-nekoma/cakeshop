@@ -1,13 +1,16 @@
 class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
 
+
+
   def update
-    @order = Order.find(params[:id])
+    # @order = Order.find(params[:id])
     @order_detail = OrderDatail.find(params[:id])
+    @order = @order_detail.order
     @order_details = @order.order_datails.all
 
     is_updated = true
-    if @order_detail.update(order_detail_params)
+    if @order_detail.update(order_datail_params)
       @order.update(order_status: "in_production") if @order_detail.production_status == "in_production"
       @order_details.each do |order_detail|
         if order_detail.production_status != "production_complete"
@@ -22,7 +25,7 @@ class Admin::OrderDetailsController < ApplicationController
 
   private
 
-  def order_detail_params
+  def order_datail_params
     params.require(:order_datail).permit(:production_status)
   end
 

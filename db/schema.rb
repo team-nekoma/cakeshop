@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2023_07_19_034643) do
     t.string "name", null: false
     t.string "postcode", null: false
     t.string "address", null: false
-    t.integer "order_status", null: false
+    t.integer "order_status", default: 0, null: false
     t.float "shipping_fee", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
