@@ -17,9 +17,9 @@
       <img src="<%= url_for(cart_item.item.image) %>" width="70" height="60" />
       <%= cart_item.item.name %>
      </td>
-     <td><%= cart_item.item.price_including_tax %></td>
+     <td>￥<%= cart_item.item.price_including_tax %></td>
      <td><%= cart_item.quantity %></td>
-     <td><%= cart_item.item.price_including_tax * cart_item.quantity %></td>
+     <td>￥<%= cart_item.item.price_including_tax * cart_item.quantity %></td>
     </tbody>
     <% @total += cart_item.subtotal %>
     <% end %>
@@ -30,16 +30,16 @@
     <tr>
      <td>送料</td>
      <% @order.shipping_fee = 800 %>
-     <td><%= @order.shipping_fee.to_i %></td>
+     <td>￥<%= @order.shipping_fee.to_i %></td>
     </tr>
     <tr>
      <td>商品合計</td>
-     <td><%= @total %></td>
+     <td>￥<%= @total %></td>
     </tr>
     <tr>
      <td>請求金額</td>
      <% @shiptotal = @total + @order.shipping_fee %>
-     <td><%= @shiptotal.to_i %></td>
+     <td>￥<%= @shiptotal.to_i %></td>
     </tr>
    </table>
   </div>
