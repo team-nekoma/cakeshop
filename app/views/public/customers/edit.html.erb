@@ -52,27 +52,11 @@
         </div>
       </div><br>
 
-    <div class="form-group row">
-  <%= f.label :is_deleted, '会員ステータス', class: 'col-sm-3 col-form-label' %>
-  <div class="col-sm-9">
-    <div class="custom-control custom-radio custom-control-inline">
-      <%= f.radio_button :is_deleted, false, checked: @customer.is_deleted == false, class: 'custom-control-input', id: 'status-active' %>
-      <%= f.label :is_deleted, '有効', class: 'custom-control-label', for: 'status-active' %>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <%= f.radio_button :is_deleted, true, checked: @customer.is_deleted == true, class: 'custom-control-input', id: 'status-deleted' %>
-      <%= f.label :is_deleted, '退会', class: 'custom-control-label', for: 'status-deleted' %>
-    </div>
-  </div>
-</div>
-
-
     <div class="row">
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-9"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
-        </div>
+      <div class="col-lg-3"></div>
+      <div class="col-lg-9 d-flex justify-content-between">
+        <%= f.submit "変更を保存", class: "btn btn-success btn-lg" %>
+        <%= link_to '退会する', withdraw_customers_path, method: :get, class: 'btn btn-danger btn-lg' %>
       </div>
     </div>
 
