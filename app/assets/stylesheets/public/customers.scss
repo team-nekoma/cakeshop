@@ -4,3 +4,8 @@
 .custom-gap {
     width: 100px;
 }
+
+.list-group-item-action:focus, .list-group-item-action:hover {
+    color: #FF97C2;
+    background-color: #FFFFDD;
+}
