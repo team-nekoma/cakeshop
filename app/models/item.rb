@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   attr_accessor :genre_id
   has_many :cart_items
-  has_many :genres
+  belongs_to :genre, optional: true
   has_many :order_datails
   validates :price, presence: true
 end

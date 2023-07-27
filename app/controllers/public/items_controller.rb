@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.where(is_active: true)
   end
   
   def show
