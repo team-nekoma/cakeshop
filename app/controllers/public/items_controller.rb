@@ -1,9 +1,16 @@
 class Public::ItemsController < ApplicationController
-  def index
-    @items = Item.all.where(is_active: true)
+ def index
+   @genres = Genre.all
+  if params[:genre_id].present?
+    @items = Item.where(genre_id: params[:genre_id], is_active: true)
+  else
+    @items = Item.where(is_active: true)
   end
+ end
+
   
   def show
+    @genres = Genre.all
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
@@ -11,6 +18,6 @@ class Public::ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:items).permit(:image,:name,:description,:price)
+    params.require(:items).permit(:image,:name,:description,:price, :genre_id)
   end
 end
