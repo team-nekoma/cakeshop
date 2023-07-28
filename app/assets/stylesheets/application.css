@@ -37,6 +37,43 @@ td {
   background-color: #FFFFF0;
 }
 
+h1, p {
+  font-family: "Nico Moji", cursive;
+}
+
+.form-control {
+   font-family: "Nico Moji", cursive;
+}
+
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.pagination a, .pagination span {
+  background: #BBFFFF;
+  color: #FFAAFF;
+  padding: 5px 10px;
+  margin: 0 4px;
+  border-radius: 3px;
+}
+
+.pagination .page.current {
+  background: #BBFFFF;
+  color: #FFAAFF;
+}
+
+.pagination .next a {
+  margin-left: 5px;
+}
+
+.pagination .prev a {
+  margin-right: 5px;
+}
+
+.btn-pink {
+  background-color: #DCC2FF;
+}
+
 
 
 

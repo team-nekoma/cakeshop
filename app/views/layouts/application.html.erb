@@ -11,6 +11,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
   </head>
 
   <body class="d-flex flex-column vh-100">
@@ -99,7 +101,15 @@
           </ul>
         </div>
       </nav>
-      <hr class="decorative-line">
+     <hr class="decorative-line">
+      <%= form_with(url: items_path, method: :get, local: true, html: { class: "form-inline" }) do |f| %>
+     <div class="form-group mx-sm-3 mb-2">
+      <%= f.label :search, "商品検索", class: "sr-only" %>
+      <%= f.text_field :search, class: "form-control", placeholder: "item&ジャンルをけんさく" %>
+     </div>
+      <%= f.submit "検索", class: "btn btn-pink mb-2" %>
+      <% end %>
+
     </header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
