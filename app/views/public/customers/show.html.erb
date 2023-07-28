@@ -1,7 +1,7 @@
 <div>
   <%= flash[:notice] %>
 </div>
-<div class="container mt-5">
+<div class="container">
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -23,7 +23,7 @@
           </tr>
           <tr>
             <th class="table-secondary">郵便番号</th>
-            <td><%= @customer.post_code %></td>
+            <td><%= @customer.post_code.to_s.insert(3, "-") %></td>
           </tr>
           <tr>
             <th class="table-secondary">住所</th>
