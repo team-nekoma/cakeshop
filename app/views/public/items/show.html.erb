@@ -20,7 +20,7 @@
             <%= form_with model:@cart_item,url:cart_items_path,local:true do |f| %>
             <%= f.hidden_field :item_id , :value => @item.id%>
             <div class="row">
-              <div class="col-4">
+              <div class="col-8">
                 <style>
                   select{width:200px;height:40px;}
                 </style>
