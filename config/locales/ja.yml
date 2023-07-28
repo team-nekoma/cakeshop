@@ -1,4 +1,18 @@
 ja:
+  activerecord:
+    models:
+      customer: 
+    attributes:
+       customer:
+         last_name: 姓
+         first_name: 名
+         kana_last_name: 姓（カナ）
+         kana_first_name: 名（カナ）
+         phone_number: 電話番号
+         post_code: 郵便番号
+         address: 住所
+         email: メールアドレス
+         password: パスワード
   enums:
     order:
       payment:
@@ -17,3 +31,4 @@ ja:
        production_pending: "製作待ち"
        in_production: "製作中"
        production_complete: "製作完了"
+
