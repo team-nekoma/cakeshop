@@ -18,7 +18,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark ">
         <div class="container">
           <a class="navbar-brand p-3" href="<%= customer_session_path %>">
-           <%= image_tag('IMG-7763.jpg', size: "200x100") %>
+           <%= image_tag('nagano (2).png', size: "130x100") %>
           </a>
           <ul class="navbar-nav ml-auto ">
             <% if admin_signed_in? %>
@@ -101,7 +101,8 @@
       </nav>
       <hr class="decorative-line">
     </header>
-    
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
     <footer>
     <hr class="decorative-line">
